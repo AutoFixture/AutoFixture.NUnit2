@@ -1,6 +1,7 @@
+using System;
 using NUnit.Core.Extensibility;
 
-namespace Ploeh.AutoFixture.NUnit2.Addins
+namespace AutoFixture.NUnit2.Addins
 {
     /// <summary>
     /// The Addin class holds information about an addin.
@@ -21,6 +22,8 @@ namespace Ploeh.AutoFixture.NUnit2.Addins
         /// <returns>True if the add-in was installed, otehrwise false</returns>
         public bool Install(IExtensionHost host)
         {
+            if(host == null) throw new ArgumentNullException(nameof(host));
+            
             var providers = host.GetExtensionPoint("TestCaseProviders");
             if (providers == null) 
                 return false;
