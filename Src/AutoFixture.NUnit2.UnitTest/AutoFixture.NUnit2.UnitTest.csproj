@@ -3,13 +3,14 @@
   <Import Project="..\..\Common.Test.props" />
 
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFrameworks>net452;net462</TargetFrameworks>
     <AssemblyTitle>AutoFixture.NUnit2.UnitTest</AssemblyTitle>
     <AssemblyName>AutoFixture.NUnit2.UnitTest</AssemblyName>
     <RootNamespace>AutoFixture.NUnit2.UnitTest</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.18.1" />
     <PackageReference Include="nunit" Version="2.7.1" />
     <PackageReference Include="NUnitTestAdapter" Version="2.3.0" />
     <PackageReference Include="NUnitV2.Core" Version="2.7.1" />
@@ -17,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoFixture.NUnit2\AutoFixture.NUnit2.csproj" />
-    <ProjectReference Include="..\AutoFixture\AutoFixture.csproj" />
     <ProjectReference Include="..\TestTypeFoundation\TestTypeFoundation.csproj" />
   </ItemGroup>
 
