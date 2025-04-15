@@ -1,55 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\Common.props" />
+  <Import Project="..\..\Common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFrameworks>net452;net462</TargetFrameworks>
     <AssemblyTitle>AutoFixture.NUnit2</AssemblyTitle>
     <AssemblyName>AutoFixture.NUnit2</AssemblyName>
     <RootNamespace>AutoFixture.NUnit2</RootNamespace>
-    <Copyright>Copyright © Ploeh 2011</Copyright>
 
     <!-- NuGet options -->
     <PackageId>AutoFixture.NUnit2</PackageId>
     <Title>AutoFixture with NUnit2</Title>
     <Description>By leveraging the some features of NUnit, this extension turns AutoFixture into a declarative framework for writing unit tests. In many ways it becomes a unit testing DSL (Domain Specific Language).</Description>
-    <Authors>Gert Jansen van Rensburg,AutoFixture</Authors>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutoFixture\AutoFixture.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="nunit.core">
-      <HintPath>..\..\References\NUnit.2.6.2\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\References\NUnit.2.6.2\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  
-  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.18.1" />
     <!-- Isn't actually needed by this library, but is present as a NuGet guard to prevent installation of this package 
      together with NUnit3 and higher. -->
-    <PackageReference Include="NUnit" Version="[2.6.2,3.0.0)" />
+    <PackageReference Include="NUnit" Version="[2.7.1,3.0.0)" />
+    <PackageReference Include="NUnitV2.Core" Version="2.7.1" />
   </ItemGroup>
 
   <!-- Include additional files to NuGet package -->
   <ItemGroup>
-    <Content Include="Readme.txt">
-      <Pack>true</Pack>
-      <PackagePath>readme.txt</PackagePath>
-    </Content>
 
     <Content Include="LocalAddin.cs.pp">
       <Pack>true</Pack>
       <PackagePath>content</PackagePath>
-    </Content>
-
-    <!-- A bit hacky (but working) way to include the referenced assembly to the package. -->
-    <Content Include="$(TargetDir)nunit.core.interfaces.dll">
-      <Pack>true</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
     </Content>
   </ItemGroup>
 </Project>
