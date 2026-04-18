@@ -10,6 +10,7 @@ jobs:
     name: windows-latest
     runs-on: windows-latest
 
+    environment: nuget-push
     permissions:
       id-token: write
 
